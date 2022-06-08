@@ -35,7 +35,7 @@ def cross_tab(data,row,column):
 
     
 #Descriptive Function
-def descriptive(data):
+def describe(data):
     '''
      this function returns the mean,median,min,max,skewness,kurtosis and Jarque Bera of numerical columns of a dataset.\n
      Note:
