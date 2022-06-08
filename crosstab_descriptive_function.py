@@ -33,3 +33,47 @@ def cross_tab(data,row,column):
     crosstab = create_crosstab(data=data,row=row,column=column)
     return crosstab
 
+    
+#Descriptive Function
+def descriptive(data):
+    '''
+     this function returns the mean,median,min,max,skewness,kurtosis and Jarque Bera of numerical columns of a dataset.\n
+     Note:
+     -------\n
+     Jarque Bera test will return NaN for columns with missing values
+    
+     Parameters:
+     ------------\n
+     data: The dataset to be analysed in csv,xlsx or las format.\n
+     Returns:
+     ---------\n
+     returns the mean,median,min,max,skewness,kurtosis and Jarque Bera summary of a dataset.
+     '''
+    #specifying the datatype == number
+    df = data.select_dtypes(include="number")
+    #creating a dictionary of the data description
+    df_mean = df.mean().to_dict()
+    df_median = df.median().to_dict()
+    df_std = df.std().to_dict()
+    df_min = df.min().to_dict()
+    df_max = df.max().to_dict()
+    df_skew = df.skew().to_dict()
+    df_kurt = df.kurtosis().to_dict()
+    df_jarque = {}
+    for key in df.columns:
+        result = stats.jarque_bera(df[key])
+        df_jarque[key] = result.statistic
+    #creating a dataframe that will be render witht the description of our data
+    describe = pd.DataFrame([
+               list(df_mean.values()),
+               list(df_median.values()),
+               list(df_std.values()),
+               list(df_min.values()),
+               list(df_max.values()),
+               list(df_skew.values()),
+               list(df_kurt.values()),
+               list(df_jarque.values())],columns=list(df_mean.keys()),index=['mean','median','std','min','max','skewness','kurtosis','Jarque_bera'])
+    #returning the dataframe
+    return describe
+
+
