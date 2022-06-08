@@ -4,6 +4,13 @@ import matplotlib.pyplot as plt
 class LogPlot:
 
     def __init__(self, las_file, depth_range=tuple, plots=list):
+        """
+
+        :param las_file:
+        :param depth_range:
+        :param plots: A list of required plots to make. The list can contain strings and tuples. Use tuple to plot more
+        than one log on an axes i.e ("GR", "BS") will plot the GR log and the BS log on the same axes
+        """
 
         self.dr = depth_range
         self.plots = plots
