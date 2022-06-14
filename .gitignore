@@ -6,7 +6,7 @@ dynamic_time_warping_module/dtwPlot.py
 dynamic_time_warping_module/example.ipynb
 dynamic_time_warping_module/requirements.txt
 dynamic_time_warping_module/result.py
-dynamic_time_warping_module/window.py
+dynamic_time_warping_module/step_pattern.py
 dynamic_time_warping_module/data/wellx1.csv
 dynamic_time_warping_module/data/wellx2.csv
 README.md
