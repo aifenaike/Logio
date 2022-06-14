@@ -1,4 +1,3 @@
-dynamic_time_warping_module/cost.py
 dynamic_time_warping_module/backtrack.py
 dynamic_time_warping_module/dtw.py
 dynamic_time_warping_module/distance.py
@@ -8,3 +7,7 @@ dynamic_time_warping_module/requirements.txt
 dynamic_time_warping_module/result.py
 dynamic_time_warping_module/step_pattern.py
 dynamic_time_warping_module/window.py
+dynamic_time_warping_module/data/wellx1.csv
+dynamic_time_warping_module/data/wellx2.csv
+README.md
+crosstab_descriptive_function.py
