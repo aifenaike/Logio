@@ -2,7 +2,7 @@ dynamic_time_warping_module/cost.py
 dynamic_time_warping_module/backtrack.py
 dynamic_time_warping_module/dtw.py
 dynamic_time_warping_module/distance.py
-dynamic_time_warping_module/example.ipynb
+dynamic_time_warping_module/dtwPlot.py
 dynamic_time_warping_module/requirements.txt
 dynamic_time_warping_module/result.py
 dynamic_time_warping_module/step_pattern.py
