@@ -53,7 +53,8 @@ Python environment setup is recommended for using this project repository. Type 
 ```sh
 'env' directory is not exist.
  you can install Python virtualenv (and also activate it) by
- virtualenv env; source env/bin/activate 
+ virtualenv env
+ source env/bin/activate 
 
  install Python dependencies then by
  pip install -r requirements.txt
