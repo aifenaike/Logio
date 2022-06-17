@@ -84,6 +84,5 @@ In terminal, just type the yellow text given to proceed.
 [back to top](#SPE_UI_LAGOS_HACKATHON)
 
 ### License
-For open source projects, say how it is licensed.
 
 [back to top](#SPE_UI_LAGOS_HACKATHON)
