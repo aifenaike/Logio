@@ -1,4 +1,4 @@
-dynamic_time_warping/backtrack.py
+dynamic_time_warping/cost.py
 dynamic_time_warping/dtw.py
 dynamic_time_warping/distance.py
 dynamic_time_warping/dtwPlot.py
