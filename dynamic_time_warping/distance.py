@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 
-
+# Obtain Alignment distance after warping.
 def _get_alignment_distance(D, pattern, open_begin, open_end):
     dist = D[-1, -1]
     normalized_dist = None

@@ -6,7 +6,7 @@ from scipy.interpolate import interp1d
 from dtwPlot import *
 
 class DtwResult():
-    """Result of DTW.
+    """Result of Dynamic time warping.
     
     Attributes
     ----------
@@ -57,7 +57,6 @@ class DtwResult():
         interp_func = interp1d(xp, yp, kind="linear")
         # get warping index as float values and then convert to int
         # note: Ideally, the warped value should be calculated as mean.
-        #       (in this implementation, just use value corresponds to rounded-up index)
         warping_index = interp_func(np.arange(xp.min(), xp.max()+1)).astype(np.int64)
         # the most left side gives nan, so substitute first index of path
         warping_index[0] = yp.min()
@@ -129,44 +128,40 @@ class DtwResult():
     def dtw_plot(self,query=None,reference=None, type=None,**kwargs):
         """Plotting of dynamic time warp results
 
-Methods for plotting stratigraphic correlation using dynamic time warp alignment objects returned by
-[dtw()].
+        Methods for plotting well log correlation using dynamic time warp alignment.
 
-**Details**
+        **Details**
 
-``Plot`` displays alignment contained in ``dtw`` objects.
+        ``dtw_plot`` displays alignment contained in ``DtwResult`` objects.
 
-Various plotting styles are available, passing strings to the ``type``
-argument (may be abbreviated):
+        Various plotting styles are available, passing strings to the ``type``
+        argument (may be abbreviated):
 
--  ``alignment`` plots the warping curve in ``alignment_vector``;
--  ``threeway`` vis-a-vis inspection of the timeseries and their warping
-   curve; see [ThreeWayPlot()]
+        -  ``alignment`` plots the warping curve in ``alignment_vector``;
+        -  ``threeway`` vis-a-vis inspection of the timeseries and their warping
+        curve; see [dtwPlot.ThreeWayPlot()]
 
-Additional parameters are passed to the plotting functions: use with
-care.
+        Additional parameters are passed to the plotting functions: use with
+        care.
 
-Parameters
-----------
-alignment_vector : 
-    `dtw` object, usually result of call to [dtw()]
-query:
-    query log (log of considerable interest)
-reference:
-    log from another well, which we intend to correlate or align with the `query` log.
-xlab : 
-    label for the query axis
-ylab : 
-    label for the reference axis
-type : 
-    general style for the plot, see below
-plot_type : 
-    type of line to be drawn, used as the `type` argument in the underlying `plot` call
-... : 
-    additional arguments, passed to plotting functions
+        Parameters
+        ----------
+        query:
+            query log (log of considerable interest)
+        reference:
+            log from another well, which we intend to correlate or align with the `query` log.
+        xlab : 
+            label for the query axis
+        ylab : 
+            label for the reference axis
+        type : 
+            general style for the plot, see below
+        plot_type : 
+            type of line to be drawn, used as the `type` argument in the underlying `plot` call
+        ... : 
+            additional arguments, passed to plotting functions
 
-"""
-
+        """
 
         alignment_vector = self.path
         if type == "alignment":

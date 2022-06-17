@@ -14,13 +14,17 @@ def dtw(x, y, dist="euclidean", window_type="none", window_size=None,
     step_pattern="symmetric2", dist_only=False, open_begin=False, open_end=False):
     """Perform dynamic time warping (dtw).
 
+    Details
+    ----------
+    A Dynamic Programming algorithm to correlate well logs and to find the minimum-cost or "best" match.
+
     Parameters
     ----------
     x : 1D or 2D array (sample * feature)
-        Query time series.
+        Query log.
 
     y : 1D or 2D array (sample * feature)
-        Reference time series.
+        Reference log.
 
     dist : string or callable
         Define how to calclulate pair-wise distance between x and y. If 
@@ -44,11 +48,11 @@ def dtw(x, y, dist="euclidean", window_type="none", window_size=None,
 
     open_begin : bool
         Whether or not perform open-ended alignment at the starting point of  
-        query time series. If true, partial alignment will be performed.
+        query log. If true, partial alignment will be performed.
 
     open_end : bool
         Whether or not perform open-ended alignment at the end point of  
-        query time series. If true, partial alignment will be performed.
+        query log. If true, partial alignment will be performed.
 
     Returns
     -------
@@ -82,7 +86,7 @@ def dtw(x, y, dist="euclidean", window_type="none", window_size=None,
 
 def dtw_from_distance_matrix(X, window_type="none", window_size=None,
     step_pattern="symmetric2", dist_only=False, open_begin=False, open_end=False):
-    """Perform dtw using pre-computed pair-wise distance matrix.
+    """Perform dtw based correlation using pre-computed pair-wise distance matrix.
 
     Parameters
     ----------
@@ -90,7 +94,7 @@ def dtw_from_distance_matrix(X, window_type="none", window_size=None,
         Pre-computed pair-wise distance matrix.
 
     others : 
-        see :func:`~dtwalign.dtw` function.
+        see :func:`dtw` function.
 
     Returns
     -------

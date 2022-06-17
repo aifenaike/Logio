@@ -12,9 +12,21 @@ def _num_to_str(num):
     else:
         return str(num)
 
-
 class BasePattern():
-    """Step pattern base class."""
+    """Step pattern base class.
+    A ``BasePattern`` object lists the transitions allowed while searching
+    for the minimum-distance path. 
+
+    **Methods**
+    ``Plot`` 
+
+    ``_normalize`` 
+
+    ``_get_array`` 
+
+    ``__repr__`` prints a user-readable description of the
+    recurrence equation defined by the given pattern.
+    """
 
     def __init__(self):
         # number of patterns
@@ -50,6 +62,13 @@ class BasePattern():
 
     def _normalize(self, row, n, m):
         """Normalize
+
+        **Details**
+        It is necessary to normalize the log measurements that
+        have been selected for dynamic time warping. Variation in
+        different units such as Hz or ms is unlikely to be equivalent!
+        It appears that how parameters are normalized `normalization_guide`
+        plays a big role in the overall success of the DTW algorithm.
 
         row : 1D array
             expect last row of D
@@ -158,6 +177,128 @@ class BasePattern():
             rv += p_str + "\n"
         rv += "\nnormalization guide: " + self.normalize_guide
         return rv
+
+##DOCS
+"""
+**Details**
+
+A step pattern characterizes the matching model and slope constraint
+specific of a DTW variant. They also known as local- or slope-constraints or transition types.
+
+**Pre-defined step patterns**
+
+      ## Well-known step patterns:
+      symmetric1
+      symmetric2
+      asymmetric
+
+      ## Slope-constrained step patterns from Sakoe-Chiba (Sakoe1978)
+      symmetricP0;  asymmetricP0
+      symmetricP05; asymmetricP05
+      symmetricP1;  asymmetricP1
+      symmetricP2;  asymmetricP2
+
+      ## Step patterns classified according to Rabiner-Myers (Myers1980)
+      typeIa;   typeIb;   typeIc;   typeId;
+      typeIas;  typeIbs;  typeIcs;  typeIds;  
+      typeIIa;  typeIIb;  typeIIc;  typeIId;
+      typeIIIc; typeIVc;
+
+
+A variety of classification schemes have been proposed for step
+patterns, including Sakoe-Chiba (Sakoe1978); Rabiner-Juang
+(Rabiner1993); and Rabiner-Myers (Myers1980). The dynamic_time_warping module
+implements some of the transition types found in those papers.
+
+For convenience, we review pre-defined step patterns grouped by
+classification. Note that the same pattern may be listed under different
+names.
+
+**1. Well-known step patterns**
+
+Common DTW implementations are based on one of the following transition
+types.
+
+``symmetric2`` is the normalizable, symmetric, with no local slope
+constraints. It can be normalized dividing by ``N+M``
+(query+reference lengths). It is widely used and the default.
+
+``asymmetric`` is asymmetric, slope constrained between 0 and 2. Matches
+each element of the query logs exactly once, so the warping path
+is guaranteed to be single-valued. Normalized by ``N`` (length of query).
+
+``symmetric1`` has no local constraint, It is non-normalizable.
+
+**2. The Rabiner-Juang set**
+
+A comprehensive table of step patterns is proposed in Rabiner-Juang’s
+book (Rabiner1993).
+The classification foresees seven types, labelled with Roman numerals
+I-VII. Each type has four slope weighting sub-types, named in
+“Type (a)” to “Type (d)”.
+
+     Subtype | Rule       | Norm | Unbiased 
+     --------|------------|------|---------
+        a    | min step   |  --  |   NO 
+        b    | max step   |  --  |   NO 
+        c    | Di step    |   N  |  YES 
+        d    | Di+Dj step | N+M  |  YES 
+
+**3. The Sakoe-Chiba set**
+
+Sakoe-Chiba (Sakoe1978) discuss a family of slope-constrained patterns;
+they are implemented as well. Here, they are called
+``symmetricP<x>`` and ``asymmetricP<x>``, where ``<x>`` corresponds to
+Sakoe’s integer slope parameter *P*. Values available are accordingly:
+``0`` (no constraint), ``1``, ``05`` (one half) and ``2``. See
+(Sakoe1978) for details.
+
+**4. The Rabiner-Myers set**
+
+The ``type<XX><y>`` step patterns follow the older Rabiner-Myers’
+classification proposed in (Myers1980) and (MRR1980). Note that this is
+a subset of the Rabiner-Juang set (Rabiner1993), and the latter should
+be preferred in order to avoid confusion. ``<XX>`` is a Roman numeral
+specifying the shape of the transitions; ``<y>`` is a letter in the
+range ``a-d`` specifying the weighting used per step, as above;
+``typeIIx`` patterns also have a version ending in ``s``, meaning the
+smoothing is used (which does not permit skipping points). The
+``typeId, typeIId`` and ``typeIIds`` are unbiased and symmetric.
+
+References
+----------
+
+-  (GiorginoJSS) Toni Giorgino. *Computing and Visualizing Dynamic Time
+   Warping Alignments in R: The dtw Package.* Journal of Statistical
+   Software, 31(7), 1-24.
+   `doi:10.18637/jss_v031.i07 <https://doi.org/10.18637/jss_v031.i07>`__
+-  (Itakura1975) Itakura, F., *Minimum prediction residual principle
+   applied to speech recognition,* Acoustics, Speech, and Signal
+   Processing, IEEE Transactions on , vol.23, no.1, pp. 67-72, Feb 1975.
+   `doi:10.1109/TASSP.1975.1162641 <https://doi.org/10.1109/TASSP.1975.1162641>`__
+-  (MRR1980) Myers, C.; Rabiner, L. & Rosenberg, A. *Performance
+   tradeoffs in dynamic time warping algorithms for isolated word
+   recognition*, IEEE Trans. Acoust., Speech, Signal Process., 1980, 28,
+   623-635.
+   `doi:10.1109/TASSP.1980.1163491 <https://doi.org/10.1109/TASSP.1980.1163491>`__
+-  (Mori2006) Mori, A.; Uchida, S.; Kurazume, R.; Taniguchi, R.;
+   Hasegawa, T. & Sakoe, H. Early Recognition and Prediction of Gestures
+   Proc. 18th International Conference on Pattern Recognition ICPR 2006,
+   2006, 3, 560-563.
+   `doi:10.1109/ICPR.2006.467 <https://doi.org/10.1109/ICPR.2006.467>`__
+-  (Myers1980) Myers, Cory S. *A Comparative Study Of Several Dynamic
+   Time Warping Algorithms For Speech Recognition*, MS and BS thesis,
+   Dept. of Electrical Engineering and Computer Science, Massachusetts
+   Institute of Technology, archived Jun 20 1980,
+   https://hdl_handle_net/1721.1/27909
+-  (Rabiner1993) Rabiner, L. R., & Juang, B.-H. (1993). *Fundamentals of
+   speech recognition.* Englewood Cliffs, NJ: Prentice Hall.
+-  (Sakoe1978) Sakoe, H.; Chiba, S., *Dynamic programming algorithm
+   optimization for spoken word recognition,* Acoustics, Speech, and
+   Signal Processing, IEEE Transactions on , vol.26, no.1, pp. 43-49,
+   Feb 1978
+   `doi:10.1109/TASSP.1978.1163055 <https://doi.org/10.1109/TASSP.1978.1163055>`__
+"""
 
 
 class Symmetric1(BasePattern):
@@ -705,7 +846,7 @@ class TypeIVc(BasePattern):
         dict(
             indices=[(-1, -3), (0, 0)],
             weights=[1]
-        ),
+        ),  
         dict(
             indices=[(-2, -1), (-1, 0), (0, 0)],
             weights=[1, 1]
@@ -783,24 +924,7 @@ class UserStepPattern(BasePattern):
         ----------
         pattern_info : list
             list contains pattern information.  
-            ex) the case of symmetric2 pattern:  
-            
-                .. code::
-
-                    pattern_info = [
-                        dict(
-                            indices=[(-1,0),(0,0)],
-                            weights=[1]
-                        ),
-                        dict(
-                            indices=[(-1,-1),(0,0)],
-                            weights=[2]
-                        ),
-                        dict(
-                            indices=[(0,-1),(0,0)],
-                            weights=[1]
-                        )
-                    ]
+            example: the case of symmetric2 pattern:     
 
         normalize_guide : string ('N','M','N+M','none')
             Guide to compute normalized distance.
@@ -818,3 +942,4 @@ class UserStepPattern(BasePattern):
         # max length of pattern
         self.max_pattern_len = max([len(pi["indices"]) for pi in self.pattern_info])
         self._get_array()
+

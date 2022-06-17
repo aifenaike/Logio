@@ -25,51 +25,51 @@ def ThreeWayPlot(alignment_vector, query=None, reference=None,
                      # IMPORT_RDOCSTRING dtwPlotThreeWay
     """Plotting of dynamic time warp results: annotated warping function
 
-Display the query and reference well logs and their warping curve,
-arranged for visual inspection.
+    Display the query and reference well logs and their warping curve,
+    arranged for visual inspection.
 
-**Details**
+    **Details**
 
-The query log is plotted in the bottom panel, with indices
-growing rightwards and values upwards. Reference log is in the left panel,
-indices growing upwards and values leftwards. 
+    The query log is plotted in the bottom panel, with indices
+    growing rightwards and values upwards. Reference log is in the left panel,
+    indices growing upwards and values leftwards. 
 
-Argument ``match_indices`` is used to draw a visual guide to matches; if
-a vector is given, guides are drawn for the corresponding indices in the
-warping curve (match lines). If integer, it is used as the number of
-guides to be plotted.
+    Argument ``match_indices`` is used to draw a visual guide to matches; if
+    a vector is given, guides are drawn for the corresponding indices in the
+    warping curve (match lines). If integer, it is used as the number of
+    guides to be plotted.
 
 
-Parameters
-----------
-alignment_vector : 
-    an alignment result, object of class `DtwResult`
-query:
-    query log (log of considerable interest) : Series
-reference:
-    log from another well, which we intend to correlate or align with the `query` log. : Series
-query_label : 
-    label for the query axis
-reference_label : 
-    label for the reference axis
-main : 
-    main title
-type_align : 
-    line style for warping curve plot
-type_ts : 
-    line style for timeseries plot
-match_indices : 
-    indices for which to draw a visual guide
-margin : 
-    outer figure margin
-inner_margin : 
-    inner figure margin
-title_margin : 
-    space on the top of figure
-... : 
-    additional arguments, used for the warping curve
+    Parameters
+    ----------
+    alignment_vector : 
+        an alignment result, object of class `DtwResult`
+    query:
+        query log (log of considerable interest) : Series
+    reference:
+        log from another well, which we intend to correlate or align with the `query` log. : Series
+    query_label : 
+        label for the query axis
+    reference_label : 
+        label for the reference axis
+    main : 
+        main title
+    type_align : 
+        line style for warping curve plot
+    type_ts : 
+        line style for timeseries plot
+    match_indices : 
+        indices for which to draw a visual guide
+    margin : 
+        outer figure margin
+    inner_margin : 
+        inner figure margin
+    title_margin : 
+        space on the top of figure
+    ... : 
+        additional arguments, used for the warping curve
 
-"""
+    """
                     
 
     # ENDIMPORT

@@ -5,7 +5,6 @@ from numba import jit
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-
 class BaseWindow():
     """Base window class."""
 
@@ -35,9 +34,9 @@ class NoWindow(BaseWindow):
         Parameters
         ----------
         len_x : int
-            Length of query.
+            Length of query log.
         len_y : int
-            Length of reference.
+            Length of reference log.
 
         """
         self._gen_window(len_x, len_y)
@@ -46,11 +45,11 @@ class NoWindow(BaseWindow):
         self.matrix = np.ones([len_x, len_y], dtype=bool)
         self.list = np.argwhere(self.matrix == True)
 
-
+#Define warping constraints.
 class SakoechibaWindow(BaseWindow):
     label = "sakoechiba window"
     def __init__(self, len_x, len_y, size):
-        """Sakoechiba window.
+        """Sakoechiba window warping constraint.
         
         Parameters
         ----------
@@ -74,7 +73,7 @@ class SakoechibaWindow(BaseWindow):
 class ItakuraWindow(BaseWindow):
     label = "itakura window"
     def __init__(self, len_x, len_y):
-        """Itakura window.
+        """Itakura window warping constraint.
 
         Parameters
         ----------
