@@ -22,8 +22,11 @@ Here are a few of the things that the package does well:
 - Load LAS data from various sources:
     - URL link (`https://example.com/.../.../path/to/lasfile.LAS`)
     - Local file (`path/to/lasfile.LAS` instead without `https`)
-- Getting well log description.
-- Save well log data into JSON file (as `well.json` in `results` folder).
+- Visualization of well logs.
+- Robust IO framework for loading data from flat files (CSV and delimited), Excel files, las files and JSON.
+- Parsing well log data into any of the formats mentioned above.
+- A novel system for well-to-well log correlation using dynamic depth warping techniques.
+    - correlating well logs and obtaining the minimum-cost or "best" match.
 
 [back to top](#SPE_UI_LAGOS_HACKATHON)
 
