@@ -7,6 +7,7 @@ dynamic_time_warping/example.ipynb
 dynamic_time_warping/result.py
 dynamic_time_warping/step_pattern.py
 dynamic_time_warping/window.py
+dynamic_time_warping/data/wellx1.csv
+dynamic_time_warping/data/wellx2.csv
 README.md
-requirements.txt
 core/analysis_converter_module
