@@ -28,28 +28,51 @@ class LogPlot:
     def plot_log(self):
 
         # self.fig.
-        self.axes[0].set_ylabel("Depth")
+        try:
+            self.axes[0].set_ylabel("Depth")
 
-        for plot, axe in zip(self.plots, self.axes):
+            for plot, axe in zip(self.plots, self.axes):
 
-            if type(plot) == tuple:
-                for plot in plot:
+                if type(plot) == tuple:
+                    for plot in plot:
+                        axe.plot(self.df[plot], self.depth, lw=1.3, label=plot)
+                        axe.set_xlabel(plot)
+                else:
                     axe.plot(self.df[plot], self.depth, lw=1.3, label=plot)
                     axe.set_xlabel(plot)
-            else:
-                axe.plot(self.df[plot], self.depth, lw=1.3, label=plot)
-                axe.set_xlabel(plot)
 
-            if axe != self.axes[0]:
-                axe.get_yaxis().set_visible(False)
+                if axe != self.axes[0]:
+                    axe.get_yaxis().set_visible(False)
 
-            axe.set_ylim(self.dr)
-            axe.invert_yaxis()
-            axe.grid(linestyle='--', linewidth=0.4)
+                axe.set_ylim(self.dr)
+                axe.invert_yaxis()
+                axe.grid(linestyle='--', linewidth=0.4)
+
+        except TypeError:
+            self.axes.set_ylabel("Depth")
+
+            for plot in self.plots:
+
+                if type(plot) == tuple:
+                    for plot in plot:
+                        self.axes.plot(self.df[plot], self.depth, lw=1.3, label=plot)
+                        self.axes.set_xlabel(plot)
+                else:
+                    self.axes.plot(self.df[plot], self.depth, lw=1.3, label=plot)
+                    self.axes.set_xlabel(plot)
+
+                self.axes.set_ylim(self.dr)
+                self.axes.invert_yaxis()
+                self.axes.grid(linestyle='--', linewidth=0.4)
+
 
     def legend(self):
-        for axe in self.axes:
-            axe.legend()
+        try:
+            for axe in self.axes:
+
+                axe.legend()
+        except TypeError:
+            self.axes.legend()
 
     def show(self):
         plt.tight_layout()
