@@ -7,8 +7,6 @@ SPE Lagos Section Hackathon - Solution Package for University of Ibadan Chapter
 
 ### What is LAS file
 
-[back to top](#SPE_UI_LAGOS_HACKATHON)
-
 **LAS** file contains physical properties data of vertical subsurface
 used in well log analysis. Well log data saved in LAS file contains
 some information, including its file **version**, **well description**,
@@ -33,8 +31,6 @@ Here are a few of the things that the package does well:
 
 ### Project dependencies
 
-[back to top](#SPE_UI_LAGOS_HACKATHON)
-
 This project uses **Python 3** with dependencies provided in **[requirements.txt](https://gitlab.com/aifenaike/spe_ui_lagos_hackathon/-/blob/main/requirements.txt)**. 
 
 [back to top](#SPE_UI_LAGOS_HACKATHON)
@@ -42,8 +38,6 @@ This project uses **Python 3** with dependencies provided in **[requirements.txt
 ---
 
 ### Project setup
-
-[back to top](#SPE_UI_LAGOS_HACKATHON)
 
 Firstly, you need to clone this repository using this command below on Terminal (Linux or Mac) or <a href="https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux" target="_blank"><abbr title="Windows Subsystem for Linux">WSL</abbr></a> (Windows).
 ```sh
