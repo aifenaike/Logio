@@ -11,7 +11,7 @@ speui/dynamic_time_warping/dtwPlot.py
 speui/dynamic_time_warping/result.py
 speui/dynamic_time_warping/step_pattern.py
 speui/dynamic_time_warping/window.py
-speui/data
+speui/logplot
 speui/core
 speui/Tutorial_01_data_parsing.ipynb
 speui/Tutorial_02_visualization.ipynb
