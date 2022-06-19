@@ -2,11 +2,18 @@ venv
 requirements.txt
 README.md
 
+speui/dynamic_time_warping/backtrack.py
+speui/dynamic_time_warping/cost.py
+speui/dynamic_time_warping/distance.py
+speui/dynamic_time_warping/DTW.py
+speui/dynamic_time_warping/dtwPlot.py
+speui/dynamic_time_warping/result.py
+speui/dynamic_time_warping/step_pattern.py
+speui/dynamic_time_warping/window.py
 speui/data
-speui/logplot
-speui/core
+speui/logplot/plot.py
+speui/core/analysis_convert.py
 speui/Tutorial_01_data_parsing.ipynb
 speui/Tutorial_02_visualization.ipynb
-speui/Tutorial_03_dynamic_time_warping..ipynb
-__init__.py
+speui/Tutorial_03_dynamic_time_warping.ipynb
 docs
