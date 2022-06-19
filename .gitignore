@@ -1,11 +1,2 @@
 venv
-requirements.txt
 README.md
-__init__.py
-docs
-speui/dynamic_time_warping/
-speui/data
-speui/logplot
-speui/Tutorial_01_data_parsing.ipynb
-speui/Tutorial_02_visualization.ipynb
-speui/Tutorial_03_dynamic_time_warping.ipynb
