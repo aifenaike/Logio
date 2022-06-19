@@ -1,79 +1,175 @@
 import matplotlib.pyplot as plt
+import lasio
+from pandas import DataFrame
+from numpy import ravel, array, arange
 
+class InvalidFormatException(Exception):
+    """Format does not conform with the required format"""
+    pass
 
 class LogPlot:
 
-    def __init__(self, las_file, depth_range=tuple, plots=list):
+    def __init__(self, data):
+        """
+        Parameters
+        ----------
+        :param data: LASFile or DataFrame object
         """
 
-        :param las_file:
-        :param depth_range:
-        :param plots: A list of required plots to make. The list can contain strings and tuples. Use tuple to plot more
-        than one log on an axes i.e ("GR", "BS") will plot the GR log and the BS log on the same axes
+        if type(data) == lasio.las.LASFile:
+            self.df = data.df()
+        elif type(data) == DataFrame:
+            self.df = data
+        else:
+            raise InvalidFormatException('data input is neither a LASFile or DataFrame object')
+
+
+    def plot_log(self, y: str="DEPTH", plots=list,depth_range=tuple, xscale :list = ['linear'], **kwargs):
+
         """
+        Parameters
+        ----------
+        y: str; name of column in dataframe to be plotted on the vertical axis
+        plots: list; a list of required plots to make. The list can contain strings and tuples. Use tuple to plot more
+                than one log on an axes i.e ("GR", "BS") will plot the GR log and the BS log on the same axes
+
+        :param depth_range: tuple, value range for the y-axis, passed to th plot as ylim()
+        **kwargs: These are passed to the subplots function, e.g: figsize = (4, 9), dpi = 60
+        xscale : {"linear", "log", "symlog", "logit", ...} The scale type to apply to the x-axis, default = 'linear'.
+        """
+
 
         self.dr = depth_range
         self.plots = plots
-        self.df = las_file.df()
-        self.depth = self.df.index
+        self.fig, self.axes = plt.subplots(ncols=len(self.plots), facecolor = '#E9E9E9', **kwargs)
+        colors = ['black', 'darkred', 'green', 'darkblue', 'orange', '']
 
-        self.fig, self.axes = plt.subplots(ncols=len(self.plots))
+        if len(xscale) == 1:
+            self.xscale = [xscale[0] for i in self.plots]
+        elif len(xscale) != len(plots):
+            raise InvalidFormatException('Length of xscale != length of plots')
+        else:
+            self.xscale = xscale
 
-        self.plot_log()
-        self.legend()
+        # Plotting a single variable on an axis
+        def plotter(axis, plot_var, scale):
+            dataframe = self.df.reset_index()
+            axis.plot(dataframe[plot_var], dataframe[y], lw=.8)
+            axis.set_xscale(scale)
+            axis.set_xlabel(plot_var)
+            axis.legend(labels = [plot_var])
+            axis.set_ylim(self.dr)
+            axis.invert_yaxis()
+            axis.minorticks_on()
+            axis.grid(which="major", linestyle='--', linewidth=0.7, color="black")
+            axis.grid(which="minor", linestyle='-.', linewidth=0.7, color="#CDC0B0")
+        
+        def tuple_plotter(axis, plot_var, scale):
+            dataframe = self.df.reset_index()
+            axis.plot(dataframe[plot_var[0]], dataframe[y], lw= .6)
+            axis.set_xscale(scale)
+            axis.set_xlabel(plot_var[0])
+            axis.legend(labels = [plot_var[0]], loc = 'upper right', borderaxespad = .1, bbox_to_anchor=(0.95, 0.96))
+            ax2 = axis.twiny()
+            ax2.plot(dataframe[plot_var[1]], dataframe[y], color= 'red', lw= .6)
+            ax2.set_xscale(scale)
+            ax2.set_xlabel(plot_var[1])
+            ax2.legend(labels = [plot_var[1]], loc = 'upper right', borderaxespad = .1, bbox_to_anchor=(0.95, 0.94))
+            axis.set_ylim(self.dr)
+            axis.invert_yaxis()
+            axis.minorticks_on()
+            axis.grid(which="major", linestyle='--', linewidth=0.7, color="black")
+            axis.grid(which="minor", linestyle='-.', linewidth=0.7, color="#CDC0B0")
 
-
-
-
-    def plot_log(self):
-
-        # self.fig.
+        
         try:
-            self.axes[0].set_ylabel("Depth")
+            self.axes[0].set_ylabel(y)
 
-            for plot, axe in zip(self.plots, self.axes):
+            for plott, x_scale, axe in zip(self.plots, self.xscale, self.axes):
 
-                if type(plot) == tuple:
-                    for plot in plot:
-                        axe.plot(self.df[plot], self.depth, lw=1.3, label=plot)
-                        axe.set_xlabel(plot)
+                if type(plott) == tuple:
+                    tuple_plotter(axe, plott, x_scale)
                 else:
-                    axe.plot(self.df[plot], self.depth, lw=1.3, label=plot)
-                    axe.set_xlabel(plot)
+                    plotter(axe, plott, x_scale)
 
                 if axe != self.axes[0]:
-                    axe.get_yaxis().set_visible(False)
+                    axe.set_yticklabels([])
 
-                axe.set_ylim(self.dr)
-                axe.invert_yaxis()
-                axe.grid(linestyle='--', linewidth=0.4)
+            plt.subplots_adjust(wspace = .05, hspace=.05)
 
         except TypeError:
-            self.axes.set_ylabel("Depth")
+            self.axes.set_ylabel(y)
 
-            for plot in self.plots:
+            for plott in self.plots:
 
-                if type(plot) == tuple:
-                    for plot in plot:
-                        self.axes.plot(self.df[plot], self.depth, lw=1.3, label=plot)
-                        self.axes.set_xlabel(plot)
+                if type(plott) == tuple:
+                    tuple_plotter(self.axes, plott, self.xscale[0])
                 else:
-                    self.axes.plot(self.df[plot], self.depth, lw=1.3, label=plot)
-                    self.axes.set_xlabel(plot)
+                    plotter(self.axes, plott, self.xscale[0])
 
-                self.axes.set_ylim(self.dr)
-                self.axes.invert_yaxis()
-                self.axes.grid(linestyle='--', linewidth=0.4)
+            plt.subplots_adjust(wspace = .05, hspace=.05)
 
-
-    def legend(self):
-        try:
-            for axe in self.axes:
-
-                axe.legend()
-        except TypeError:
-            self.axes.legend()
 
     def show(self):
         plt.tight_layout()
         plt.show()
+
+
+    def cutoff_plot(self, x, y, x_cutoff,  y_range: tuple = (0,0), colors: list = ['red', 'lightblue'],labels: list = ['Cat_A', 'Cat_B'], fig_size : tuple = (4.5, 10)):
+        """
+        Parameters
+        ----------
+        dataframe: pandas.DataFrame object containing the data to be analysed
+        x: name of column to be plotted on the x-axis
+        y: name of column to be plotted on the y-axis
+        x_cutoff: GR value for separating shale volumes from sand volumes
+                If specified as a fraction between 0 and 1, it is calculated as:
+                (max_GR_value - min_GR_value) * x_cutoff + min_GR_value
+                Otherwise, the GR plot is separated into sand and shale volumes
+                based on the GR value passed
+        figsize: tuple (width, height) for controlling the size of the plot 
+        """
+
+        #Check
+        if len(colors) == 2:
+            pass
+        else:
+            raise InvalidFormatException('Length of colors does not match number of partitions')
+        
+        if len(labels) == 2:
+            pass
+        else:
+            raise InvalidFormatException('Length of labels does not match number of partitions')
+        
+        # Removing null values from the data to be plotted
+        dataframe = self.df[~self.df[x].isnull()]
+        y1 = dataframe.reset_index()[y]
+        x1 = dataframe[x]
+        if (x_cutoff > 0) & (x_cutoff< 1):
+            x2 = (x1.max() - x1.min()) * x_cutoff + x1.min()
+        else:
+            x2 = x_cutoff
+
+        plt.figure(figsize = fig_size, dpi = 100, facecolor = '#E9E9E9')
+        
+        # Plotting the cutoff
+        plt.fill_betweenx(y1, x1, x2, where = x2>=x1, facecolor = colors[0], label = labels[0])
+        plt.fill_betweenx(y1, x1, x2, where = x2<x1, facecolor = colors[1], label = labels[1])
+        plt.vlines(x2, y1.min(), y1.max(), linestyles='dashed', color = '#000000', lw = 1, label = 'cutoff')
+
+        # Plot styling
+        if y_range[1] != 0:
+            plt.ylim(y_range)
+        plt.xlabel(x, fontsize = 12)
+        plt.ylabel(y, fontsize = 12)
+        plt.grid(True, axis = 'both', lw = .5, color = 'gray', alpha = .6)
+        y_min = round(plt.ylim()[0] - 50, -2)
+        y_max = round(plt.ylim()[1] + 50, -2) +1
+        stepsize = round((y_max - y_min)/20, -2)
+        plt.yticks(arange(y_min, y_max, stepsize))
+        plt.gca().invert_yaxis()
+        plt.legend();
+        
+        plt.show()
+
+        
