@@ -219,13 +219,13 @@ class DtwResult():
         x_path = self.path[:,0]
         y_path = self.path[:,1]
         if isinstance(query, np.ndarray) & isinstance(reference, np.ndarray):
-            plt.plot(query[x_path],label="aligned query log")
-            plt.plot(reference[y_path],label="aligned reference log")
+            plt.plot(query[x_path],label="aligned query to reference log")
+            plt.plot(reference[y_path],label="reference log")
             plt.legend()
             plt.show()
         else:
-            plt.plot(query.values[x_path],label="aligned query log")
-            plt.plot(reference.values[y_path],label="aligned reference log")
+            plt.plot(query.values[x_path],label="aligned query to reference log")
+            plt.plot(reference.values[y_path],label="reference log")
             plt.legend()
             plt.show()
   

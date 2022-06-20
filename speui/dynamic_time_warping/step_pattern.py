@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import numpy as np
 import matplotlib.pyplot as plt
 import networkx as nx
@@ -924,7 +923,21 @@ class UserStepPattern(BasePattern):
         ----------
         pattern_info : list
             list contains pattern information.  
-            example: the case of symmetric2 pattern:     
+            example: the case of symmetric2 pattern: 
+            pattern_info = [
+                            dict(
+                                indices=[(-1,0),(0,0)],
+                                weights=[1]
+                            ),
+                            dict(
+                                indices=[(-1,-1),(0,0)],
+                                weights=[2]
+                            ),
+                            dict(
+                                indices=[(0,-1),(0,0)],
+                                weights=[1]
+                            )
+                        ]    
 
         normalize_guide : string ('N','M','N+M','none')
             Guide to compute normalized distance.

@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import numpy as np
 from scipy.spatial.distance import cdist
 from .cost import _calc_cumsum_matrix_jit
@@ -44,16 +42,15 @@ def dtw(x, y, dist="euclidean", window_type="none", window_size=None,
         Step pattern to use.
 
     dist_only : bool
-        Whether or not to obtain warping path. If true,  
-        only alignment distance will be calculated.
+        Whether or not to obtain warping path. If true, only alignment distance will be calculated.
 
     open_begin : bool
-        Whether or not perform open-ended alignment at the starting point of  
-        query log. If true, partial alignment will be performed.
+        Whether or not perform open-ended alignment at the starting point of  query log.
+        If true, partial alignment will be performed.
 
     open_end : bool
-        Whether or not perform open-ended alignment at the end point of  
-        query log. If true, partial alignment will be performed.
+        Whether or not perform open-ended alignment at the end point of query log.
+        If true, partial alignment will be performed.
 
     Returns
     -------

@@ -1,2 +1,10 @@
 venv
 README.md
+requirements.txt
+speui/core
+__init__.py
+speui/data
+speui/logplot
+speui/Tutorial_01_data_parsing.ipynb.
+speui/Tutorial_02_visualization.ipynb.
+speui/Tutorial_03_dynamic_time_warping.ipynb.

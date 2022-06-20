@@ -114,13 +114,14 @@ class Analysis:
         #returning the dataframe
         return describe
     
-    def correlate(self, df : DataFrame, method : str = 'pearson'):
+    def correlate(self, data, method : str = 'pearson'):
         """
-        Compute pairwise correlation of columns, excluding NA/null 
+        Compute pairwise correlation of columns in a dataframe or lasio.las.LASFile, excluding NA/null 
         and non-numerical values.
     
         Parameters
         ----------
+        data: 
         method : {'pearson', 'kendall', 'spearman'}
             Method of correlation:
 
@@ -132,11 +133,15 @@ class Analysis:
         -------
         DataFrame
             Correlation matrix.
-            Calculates the pairwise correlation between columns in a dataframe
         """
 
-        # Coerce the input into a dataframe if it is not one already
-        df = DataFrame(df) 
+        # Confirm the type of the input data
+        if type(data) == lasio.las.LASFile:
+            df = data.df()
+        elif type(data) == DataFrame:
+            df = data
+        else:
+            raise InvalidFormatException('Data input is neither a lasio.las.LASFile nor DataFrame object')
 
         # Drop NA values from the dataframe
         df.dropna(inplace = True) 
@@ -145,6 +150,7 @@ class Analysis:
         new_df = df.select_dtypes(include = 'number') 
     
         return new_df.corr(method = method)
+
     
     def cross_tab(self, data, row, column):
         """

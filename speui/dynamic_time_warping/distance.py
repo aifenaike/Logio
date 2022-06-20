@@ -28,5 +28,5 @@ def _get_alignment_distance(D, pattern, open_begin, open_end):
 
     # check whether path can reach at end point with given constraint
     if dist == np.inf:
-        raise ValueError("no alignment path found")
+        raise ValueError("No alignment path found at end point with given constraint. Try different constraints.")
     return dist, normalized_dist, last_idx
