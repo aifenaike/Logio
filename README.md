@@ -11,7 +11,7 @@ Also, this package is an Unsupervised Machine learning framework for well-well d
 
 
 
-![Well Log Plots](static/plot_well.png "Well Log  Plots")
+![Well Log Plots](static/plot_well.png)
 
 > [LAS Files](#las-files)  
 > [Features](#features)  
@@ -19,6 +19,7 @@ Also, this package is an Unsupervised Machine learning framework for well-well d
 > [Installation](#installation)  
 > [Getting Started](#getting-started)  
 > [Credits and References](#credits-and-references)  
+> [Contributing](#Contributing)  
 > [Support](#support)  
 > [Authors](#authors)  
 ---
@@ -127,6 +128,12 @@ See the [tutorials](./Tutorial) to explore the package step-by-step.
  
 ---
 
+## Contributing
+
+Please see [`CONTRIBUTING.md`](CONTRIBUTING.md).
+
+---
+
 ### Support
 
 For support, email alexander.ifenaike@gmail.com
@@ -135,7 +142,7 @@ For support, email alexander.ifenaike@gmail.com
 
 ### Authors
 
-Please see `AUTHORS.md`(AUTHORS.md).
+Please see [`AUTHORS.md`](AUTHORS.md).
 
 [back to top](#logio)
 

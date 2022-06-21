@@ -1,5 +1,5 @@
 venv
-README.md
+AUTHORS.md
 requirements.txt
 logio/core
 logio/logplot
