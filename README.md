@@ -15,8 +15,8 @@ Also, this package is an Unsupervised Machine learning framework for well-well d
 
 > [LAS Files](#las-files)  
 > [Features](#features)  
-> [Dependencies](#dependencies) 
-> [Documentation](#Documentation) 
+> [Dependencies](#dependencies)  
+> [Documentation](#Documentation)  
 > [Installation](#installation)  
 > [Getting Started](#getting-started)  
 > [Credits and References](#credits-and-references)  
