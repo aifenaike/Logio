@@ -15,7 +15,7 @@ name="logio",
     long_description_content_type="text/markdown",
     url="https://gitlab.com/aifenaike/Logio",
     author=['Ifenaike Alexander', 'Awojinrin Gbenga',"Ayodabo Tomisin", 'Ikpabi Prince', 'Omotosho Temitope', 'Adeyemi Abdullateef']
-    authro_email=["alexander.ifenaike@gmail.com"],
+    author_email=["alexander.ifenaike@gmail.com"],
     license="MIT",
     classifiers=[
         "License :: OSI Approved :: MIT License",
