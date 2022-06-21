@@ -54,7 +54,7 @@ This project uses **Python 3** with dependencies provided in **[requirements.txt
 ### Documentation
 
 See the [Tutorials](./Tutorial) to explore the framework step-by-step in jupyter notebooks
-and the [documentation]() for more details.
+and the [documentation](https://logio.readthedocs.io/en/latest/) for more details.
 
 ---
 
