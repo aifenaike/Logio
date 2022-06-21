@@ -2,10 +2,9 @@ venv
 README.md
 requirements.txt
 logio/core
-logio/data
 logio/logplot
 logio/dynamic_time_warping
-logio/Tutorial_01_data_parsing.ipynb
-logio/Tutorial_02_visualization.ipynb
-logio/Tutorial_03_dynamic_time_warping.ipynb
+Tutorial
 LICENSE.txt
+__init__.py
+.vscode
