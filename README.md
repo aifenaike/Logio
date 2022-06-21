@@ -1,88 +1,124 @@
-# SPE_UI_LAGOS_HACKATHON
-SPE Lagos Section Hackathon - Solution Package for University of Ibadan Chapter
+# Homelander
+**Society of Petroleum Engineers, University of Ibadan Chapter**  
+    *Submission for the SPE Lagos Section Hackathon*
 
-[What is LAS file](#what-is-las-file) | [Project feature(s)](#project-features) | [Project dependencies](#project-dependencies) | [Project setup](#project-setup) | [Getting started](#getting-started) | [License](#License)
+Python package for well log analysis and visualization using python, matplotlib and pandas.
+![Alternate Text](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
+> [LAS Files](#Las-Files)  
+> [Features](#Features)  
+> [Dependencies](#Dependencies)  
+> [Installation](#Installation)  
+> [Getting Started](#Getting-Started)  
+> [Credits and References](#Credits-and-References)  
+> [Support](#Support)  
+> [Authors](#Authors)  
 
 ---
 
-### What is LAS file
+### LAS Files
 
-**LAS** file contains physical properties data of vertical subsurface
-used in well log analysis. Well log data saved in LAS file contains
-some information, including its file **version**, **well description**,
-**physical rock curve** along with **data table** and **other information** related to the well data.
-
-[back to top](#SPE_UI_LAGOS_HACKATHON)
+A **LAS** file contains physical properties data of vertical subsurface used in well log analysis.  
+Well log data saved in LAS file generally contains information, including its file **version**, **well description**, **physical rock curve** along with **data table** and **other information** related to the well data.
 
 ---
 
-### Project feature(s)
+### Features
 Here are a few of the things that the package does well:
 
-- Load LAS data from various sources:
+* Loads LAS data from various sources:
     - URL link (`https://example.com/.../.../path/to/lasfile.LAS`)
     - Local file (`path/to/lasfile.LAS` instead without `https`)
-- Visualization of well logs.
-- Robust IO framework for loading data from flat files (CSV and delimited), Excel files, las files and JSON.
-- Parsing well log data into any of the formats mentioned above.
-- A novel system for well-to-well log correlation using dynamic depth warping techniques.
+* Robust IO framework for loading data from flat files (CSV and delimited), Excel files, las files and JSON.
+* Parsing well log data into any of the formats mentioned above.
+* Hardcoded and flexible implementations for visualization of well logs and non-well log data, but in log format
+* A novel system for well-to-well log correlation using dynamic depth warping techniques.
     - correlating well logs and obtaining the minimum-cost or "best" match.
+---
 
-[back to top](#SPE_UI_LAGOS_HACKATHON)
+### Dependencies
+
+This project uses **Python 3** with dependencies provided in **[requirements.txt](requirements.txt)**. 
 
 ---
 
-### Project dependencies
+### Installation
 
-This project uses **Python 3** with dependencies provided in **[requirements.txt](https://gitlab.com/aifenaike/spe_ui_lagos_hackathon/-/blob/main/requirements.txt)**. 
-
-[back to top](#SPE_UI_LAGOS_HACKATHON)
-
----
-
-### Project setup
-
-Firstly, you need to clone this repository using this command below on Terminal (Linux or Mac) or <a href="https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux" target="_blank"><abbr title="Windows Subsystem for Linux">WSL</abbr></a> (Windows).
+Clone this repository using this command below on Terminal (Linux or Mac) or <a href="https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux" target="_blank"><abbr title="Windows Subsystem for Linux">WSL</abbr></a> (Windows).
 ```sh
 git clone https://gitlab.com/aifenaike/spe_ui_lagos_hackathon
 cd SPE_UI_LAGOS_HACKATHON
 ```
 
-Python environment setup is recommended for using this project repository. Type `./check-pyenv.sh` (using Linux/Unix terminal console or WSL console) for validating Python environments. By default, Python `virtualenv` has not been set yet so that it will be return results as below.
+Python environment setup is recommended for using this project repository.  
+Type `./check-pyenv.sh` (using Linux/Unix terminal console or WSL console) to validate Python environments. By default, Python `virtualenv` has not been set yet, returning the result below.
+```sh
+'env' directory does not exist.
+```
+Install the Python virtualenv (and also activate it) using
+```sh
+virtualenv env
+source env/bin/activate 
+```
+You can now proceed to install required packages by running
+```sh
+pip install -r requirements.txt
+```
+
+Alternatively, you can [create the environment variable manually](https://docs.python.org/3/library/venv.html) by typing the commands below on Linux or MacOS (and also WSL console).
 
 ```sh
-'env' directory is not exist.
- you can install Python virtualenv (and also activate it) by
- virtualenv env
- source env/bin/activate 
-
- install Python dependencies then by
- pip install -r requirements.txt
-```
-
-or you can [create the environment variable manually](https://docs.python.org/3/library/venv.html) by typing command below on Linux or MacOS (and also WSL console).
-
-```
 python -m venv venv
 source venv/bin/activate
 ```
-
-and also for Windows.
-```
+and for Windows.
+```sh
 python -m venv venv
 venv\Scripts\activate
 ```
-
 In terminal, just type the yellow text given to proceed.
-
-[back to top](#SPE_UI_LAGOS_HACKATHON)
 
 ---
 
-### Getting started
+### Getting Started
+Load and plot a well log from ```.las``` file
+```python
+from speui.core import Analysis
+from speui.logplot import PlotWell, LogPlot
 
-[back to top](#SPE_UI_LAGOS_HACKATHON)
+# Read in your data from a .las file
+data = Analysis().read_file(filename="data/15_9-F-11B.LAS")
+data.df().head()
 
-### License
+# Plot a GR log with a cutoff delineating shale from sand volumes
+LogPlot(data).cutoff_plot(x="GR", y="DEPTH", x_cutoff=0.45,  y_range= (0,0),xscale='linear',labels= ['Sand', 'Shale'], 
+                          fig_size = (4.5, 7),colors=['#964B00','#101010']) 
+```
+![Gamma Ray Cutoff Plot](attachment:image-3.png)
+See the [tutorials](speui/) to explore the package step-by-step.
 
-[back to top](#SPE_UI_LAGOS_HACKATHON)
+---
+
+### Credits and References
+
+ - [**Schlumberger** Log Interpretation Principles\Applications](https://www.slb.com/resource-library/book/log-interpretation-principles-applications)
+ 
+---
+
+### Support
+
+For support, email alexander.ifenaike@gmail.com
+
+---
+
+### Authors
+
+- [Gbenga Thompson](https://www.linkedin.com/in/gbenga-awojinrin)
+- [Gbenga Thompson](https://www.linkedin.com/in/gbenga-awojinrin)
+- [Gbenga Thompson](https://www.linkedin.com/in/gbenga-awojinrin)
+- [Gbenga Thompson](https://www.linkedin.com/in/gbenga-awojinrin)
+- [Gbenga Thompson](https://www.linkedin.com/in/gbenga-awojinrin)
+
+
+[back to top](#Homelander)
+
