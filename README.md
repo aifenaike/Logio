@@ -3,7 +3,7 @@
     *Submission for the SPE Lagos Section Hackathon*
 
 Python package for well log analysis and visualization using python, matplotlib and pandas.
-![Alternate Text](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![Gamma Ray Cutoff Plot](static/cutoff_plot.png "Gamma Ray Cutoff Plot")
 
 > [LAS Files](#las-files)  
 > [Features](#features)  
@@ -24,6 +24,7 @@ Well log data saved in LAS file generally contains information, including its fi
 ---
 
 ### Features
+
 Here are a few of the things that the package does well:
 
 * Loads LAS data from various sources:
@@ -81,6 +82,18 @@ In terminal, just type the yellow text given to proceed.
 ---
 
 ### Getting Started
+
+```mermaid
+graph TB
+A(speui)--> B((core))
+A --> C((logplot))
+A --> D((dynamic_time_warping))
+C --> E{PlotWell}
+C --> F{LogPLot}
+B --> G{Analysis}
+D --> H{DTW}
+```
+
 Load and plot a well log from ```.las``` file
 ```python
 from speui.core import Analysis
@@ -94,7 +107,7 @@ data.df().head()
 LogPlot(data).cutoff_plot(x="GR", y="DEPTH", x_cutoff=0.45,  y_range= (0,0),xscale='linear',labels= ['Sand', 'Shale'], 
                           fig_size = (4.5, 7),colors=['#964B00','#101010']) 
 ```
-![Gamma Ray Cutoff Plot](attachment:image-3.png)
+![Gamma Ray Cutoff Plot](static/cutoff_plot.png "Gamma Ray Cutoff Plot")
 See the [tutorials](speui/) to explore the package step-by-step.
 
 ---
@@ -122,8 +135,3 @@ For support, email alexander.ifenaike@gmail.com
 
 [back to top](#Homelander)
 
-
-
-```python
-
-```
