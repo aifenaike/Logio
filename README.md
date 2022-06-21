@@ -1,3 +1,7 @@
+[![Python](https://img.shields.io/badge/python-3-blue.svg)](https://python.org)
+[![lasio](https://img.shields.io/badge/lasio-Lasio-brightgreen)](https://lasio.readthedocs.io/en/latest/)
+
+
 # Logio
 **Society of Petroleum Engineers, University of Ibadan Chapter**  
     *Submission for the SPE Lagos Section Hackathon*
