@@ -1,9 +1,10 @@
-# Homelander
+# Logio
 **Society of Petroleum Engineers, University of Ibadan Chapter**  
     *Submission for the SPE Lagos Section Hackathon*
 
 Python package for well log analysis and visualization using python, matplotlib and pandas.
-![Gamma Ray Cutoff Plot](static/cutoff_plot.png "Gamma Ray Cutoff Plot")
+
+![Well Log Plots](static/plot_well.png "Well Log  Plots")
 
 > [LAS Files](#las-files)  
 > [Features](#features)  
@@ -13,19 +14,18 @@ Python package for well log analysis and visualization using python, matplotlib 
 > [Credits and References](#credits-and-references)  
 > [Support](#support)  
 > [Authors](#authors)  
-
 ---
 
 ### LAS Files
 
-A **LAS** file contains physical properties data of vertical subsurface used in well log analysis.  
-Well log data saved in LAS file generally contains information, including its file **version**, **well description**, **physical rock curve** along with **data table** and **other information** related to the well data.
+**LAS**, short for Log ASCII Standard (LAS) files, are generated in borehole operations such as geophysical, geological, or petrophysical logs. file contains  
+Well log data saved in LAS file generally contains information, including its file **version**, **well description**, **physical rock curve** along with **data table** and **other information** related to the well data typically used in well log analysis. 
 
 ---
 
 ### Features
 
-Here are a few of the things that the package does well:
+Here are a few things this package does well:
 
 * Loads LAS data from various sources:
     - URL link (`https://example.com/.../.../path/to/lasfile.LAS`)
@@ -43,12 +43,18 @@ This project uses **Python 3** with dependencies provided in **[requirements.txt
 
 ---
 
+### Documentation
+
+See here for the [complete Logio package documentation]().
+
+---
+
 ### Installation
 
 Clone this repository using this command below on Terminal (Linux or Mac) or <a href="https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux" target="_blank"><abbr title="Windows Subsystem for Linux">WSL</abbr></a> (Windows).
 ```sh
 git clone https://gitlab.com/aifenaike/spe_ui_lagos_hackathon
-cd SPE_UI_LAGOS_HACKATHON
+cd Logio
 ```
 
 Python environment setup is recommended for using this project repository.  
@@ -91,23 +97,26 @@ A --> D((dynamic_time_warping))
 C --> E{PlotWell}
 C --> F{LogPLot}
 B --> G{Analysis}
-D --> H{DTW}
+D --> H{dtw}
 ```
 
+Example Session:
 Load and plot a well log from ```.las``` file
 ```python
-from speui.core import Analysis
-from speui.logplot import PlotWell, LogPlot
+# Import the packages
+>>> from speui.core import Analysis
+>>> from speui.logplot import PlotWell, LogPlot
 
 # Read in your data from a .las file
-data = Analysis().read_file(filename="data/15_9-F-11B.LAS")
-data.df().head()
+>>> data = Analysis().read_file(filename="data/15_9-F-11B.LAS")
 
 # Plot a GR log with a cutoff delineating shale from sand volumes
 LogPlot(data).cutoff_plot(x="GR", y="DEPTH", x_cutoff=0.45,  y_range= (0,0),xscale='linear',labels= ['Sand', 'Shale'], 
                           fig_size = (4.5, 7),colors=['#964B00','#101010']) 
 ```
+
 ![Gamma Ray Cutoff Plot](static/cutoff_plot.png "Gamma Ray Cutoff Plot")
+
 See the [tutorials](speui/) to explore the package step-by-step.
 
 ---
@@ -115,6 +124,7 @@ See the [tutorials](speui/) to explore the package step-by-step.
 ### Credits and References
 
  - [**Schlumberger** Log Interpretation Principles\Applications](https://www.slb.com/resource-library/book/log-interpretation-principles-applications)
+ - [**lasio**](https://github.com/kinverarity1/lasio)
  
 ---
 
@@ -133,5 +143,10 @@ For support, email alexander.ifenaike@gmail.com
 - [Gbenga Thompson](https://www.linkedin.com/in/gbenga-awojinrin)
 
 
-[back to top](#Homelander)
+[back to top](#logio)
 
+
+
+```python
+
+```
