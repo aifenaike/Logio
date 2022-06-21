@@ -1,4 +1,5 @@
 venv
+README.md
 requirements.txt
 logio/core
 logio/logplot
@@ -9,4 +10,3 @@ __init__.py
 .vscode
 AUTHORS.md
 CONTRIBUTING.md
-static
