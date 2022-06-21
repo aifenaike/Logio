@@ -49,7 +49,8 @@ This project uses **Python 3** with dependencies provided in **[requirements.txt
 
 ### Documentation
 
-See here for the [complete Logio package documentation]().
+See the [Tutorials](./Tutorial) to explore the framework step-by-step in jupyter notebooks
+and the [documentation]() for more details.
 
 ---
 
@@ -141,10 +142,11 @@ For support, email alexander.ifenaike@gmail.com
 ### Authors
 
 - [Gbenga Thompson](https://www.linkedin.com/in/gbenga-awojinrin)
-- [Gbenga Thompson](https://www.linkedin.com/in/gbenga-awojinrin)
-- [Gbenga Thompson](https://www.linkedin.com/in/gbenga-awojinrin)
-- [Gbenga Thompson](https://www.linkedin.com/in/gbenga-awojinrin)
-- [Gbenga Thompson](https://www.linkedin.com/in/gbenga-awojinrin)
+- [Ifenaike Alexander](https://github.com/aifenaike)
+- [Adeyemi Adedoyin](https://linkedin.com/in/adedoyin-adeyemi-325405213)
+- [Ikpabi Prince](https://www.linkedin.com/in/prince-ikpabi-988bb0183/)
+- [Ayodabo Tomisin](https://github.com/king-tomi)
+- [Omotosho Temitope](https://www.linkedin.com/in/temitopeomotosho/)
 
 
 [back to top](#logio)
