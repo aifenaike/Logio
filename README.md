@@ -15,7 +15,8 @@ Also, this package is an Unsupervised Machine learning framework for well-well d
 
 > [LAS Files](#las-files)  
 > [Features](#features)  
-> [Dependencies](#dependencies)  
+> [Dependencies](#dependencies) 
+> [Documentation](#Documentation) 
 > [Installation](#installation)  
 > [Getting Started](#getting-started)  
 > [Credits and References](#credits-and-references)  
@@ -116,7 +117,6 @@ LogPlot(data).cutoff_plot(x="GR", y="DEPTH", x_cutoff=0.45,  y_range= (0,0),xsca
 
 ![Gamma Ray Cutoff Plot](static/cutoff_plot.png "Gamma Ray Cutoff Plot")
 
-See the [tutorials](./Tutorial) to explore the package step-by-step.
 
 ---
 
