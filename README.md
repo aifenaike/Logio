@@ -20,7 +20,7 @@ Also, this package is an Unsupervised Machine learning framework for well-well d
 > [Installation](#installation)  
 > [Getting Started](#getting-started)  
 > [Credits and References](#credits-and-references)  
-> [Contributing](#Contributing)  
+> [Contributing](#contributing)  
 > [Support](#support)  
 > [Authors](#authors)  
 ---
