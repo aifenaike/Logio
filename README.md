@@ -11,7 +11,7 @@ Also, this package is an Unsupervised Machine learning framework for well-well d
 
 
 
-![Well Log Plots](static/plot_well.png)
+![Well Log Plots](static/plotwell.png)
 
 > [LAS Files](#las-files)  
 > [Features](#features)  
