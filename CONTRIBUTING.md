@@ -12,4 +12,4 @@ There are several important ways you can help; here are some examples:
 
 ## Authorship
 
-If you contribute a pull request to the project, please add yourself to `AUTHORS.md`(AUTHORS.md).
+If you contribute a pull request to the project, please add yourself to [`AUTHORS.md`](AUTHORS.md).
