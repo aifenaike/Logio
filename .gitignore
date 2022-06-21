@@ -5,3 +5,8 @@ speui/core
 speui/data
 speui/logplot
 speui/dynamic_time_warping
+ode 100644 __init__.py
+speui/Tutorial_01_data_parsing.ipynb
+speui/Tutorial_02_visualization.ipynb
+speui/Tutorial_03_dynamic_time_warping.ipynb
+speui/Untitled-1.ipynb
