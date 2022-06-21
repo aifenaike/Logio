@@ -1,88 +1,146 @@
-# SPE_UI_LAGOS_HACKATHON
-SPE Lagos Section Hackathon - Solution Package for University of Ibadan Chapter
+[![Python](https://img.shields.io/badge/python-3-blue.svg)](https://python.org)
+[![lasio](https://img.shields.io/badge/lasio-Lasio-brightgreen)](https://lasio.readthedocs.io/en/latest/)
 
-[What is LAS file](#what-is-las-file) | [Project feature(s)](#project-features) | [Project dependencies](#project-dependencies) | [Project setup](#project-setup) | [Getting started](#getting-started) | [License](#License)
+
+# Logio
+**Society of Petroleum Engineers, University of Ibadan Chapter**  
+    *Submission for the SPE Lagos Section Hackathon*
+
+Python package for well log analysis and visualization. 
+Also, this package is an Unsupervised Machine learning framework for well-well depth correlation using logs.
+
+
+
+![Well Log Plots](static/plot_well.png "Well Log  Plots")
+
+> [LAS Files](#las-files)  
+> [Features](#features)  
+> [Dependencies](#dependencies)  
+> [Installation](#installation)  
+> [Getting Started](#getting-started)  
+> [Credits and References](#credits-and-references)  
+> [Support](#support)  
+> [Authors](#authors)  
+---
+
+### LAS Files
+
+**LAS**, short for Log ASCII Standard (LAS) files, are generated in borehole operations such as geophysical, geological, or petrophysical logs. file contains  
+Well log data saved in LAS file generally contains information, including its file **version**, **well description**, **physical rock curve** along with **data table** and **other information** related to the well data typically used in well log analysis. 
 
 ---
 
-### What is LAS file
+### Features
 
-**LAS** file contains physical properties data of vertical subsurface
-used in well log analysis. Well log data saved in LAS file contains
-some information, including its file **version**, **well description**,
-**physical rock curve** along with **data table** and **other information** related to the well data.
+Here are a few things this package does well:
 
-[back to top](#SPE_UI_LAGOS_HACKATHON)
-
----
-
-### Project feature(s)
-Here are a few of the things that the package does well:
-
-- Load LAS data from various sources:
+* Loads LAS data from various sources:
     - URL link (`https://example.com/.../.../path/to/lasfile.LAS`)
     - Local file (`path/to/lasfile.LAS` instead without `https`)
-- Visualization of well logs.
-- Robust IO framework for loading data from flat files (CSV and delimited), Excel files, las files and JSON.
-- Parsing well log data into any of the formats mentioned above.
-- A novel system for well-to-well log correlation using dynamic depth warping techniques.
+* Robust IO framework for loading data from flat files (CSV and delimited), Excel files, las files and JSON.
+* Parsing well log data into any of the formats mentioned above.
+* Hardcoded and flexible implementations for visualization of well logs and non-well log data, but in log format
+* A novel system for well-to-well log correlation using dynamic depth warping techniques.
     - correlating well logs and obtaining the minimum-cost or "best" match.
+---
 
-[back to top](#SPE_UI_LAGOS_HACKATHON)
+### Dependencies
+
+This project uses **Python 3** with dependencies provided in **[requirements.txt](requirements.txt)**. 
 
 ---
 
-### Project dependencies
+### Documentation
 
-This project uses **Python 3** with dependencies provided in **[requirements.txt](https://gitlab.com/aifenaike/spe_ui_lagos_hackathon/-/blob/main/requirements.txt)**. 
-
-[back to top](#SPE_UI_LAGOS_HACKATHON)
+See the [Tutorials](./Tutorial) to explore the framework step-by-step in jupyter notebooks
+and the [documentation]() for more details.
 
 ---
 
-### Project setup
+### Installation
 
-Firstly, you need to clone this repository using this command below on Terminal (Linux or Mac) or <a href="https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux" target="_blank"><abbr title="Windows Subsystem for Linux">WSL</abbr></a> (Windows).
+Clone this repository using this command below on Terminal (Linux or Mac) or <a href="https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux" target="_blank"><abbr title="Windows Subsystem for Linux">WSL</abbr></a> (Windows).
 ```sh
-git clone https://gitlab.com/aifenaike/spe_ui_lagos_hackathon
-cd SPE_UI_LAGOS_HACKATHON
+git clone https://gitlab.com/aifenaike/Logio.git
+cd Logio
 ```
 
-Python environment setup is recommended for using this project repository. Type `./check-pyenv.sh` (using Linux/Unix terminal console or WSL console) for validating Python environments. By default, Python `virtualenv` has not been set yet so that it will be return results as below.
+Python environment setup is recommended for using this project repository.  
+
+You can [create the environment variable manually](https://docs.python.org/3/library/venv.html) by typing the commands below on Linux or MacOS (and also WSL console).
 
 ```sh
-'env' directory is not exist.
- you can install Python virtualenv (and also activate it) by
- virtualenv env
- source env/bin/activate 
-
- install Python dependencies then by
- pip install -r requirements.txt
-```
-
-or you can [create the environment variable manually](https://docs.python.org/3/library/venv.html) by typing command below on Linux or MacOS (and also WSL console).
-
-```
 python -m venv venv
 source venv/bin/activate
 ```
-
-and also for Windows.
+and for Windows.
 ```
 python -m venv venv
-venv\Scripts\activate
+venv/Scripts/activate
 ```
 
-In terminal, just type the yellow text given to proceed.
+You can now proceed to install required packages by running
+```sh
+pip install -r requirements.txt
+```
+---
 
-[back to top](#SPE_UI_LAGOS_HACKATHON)
+### Getting Started
+
+```mermaid
+graph TB
+A(logio)--> B((core))
+A --> C((logplot))
+A --> D((dynamic_time_warping))
+C --> E{PlotWell}
+C --> F{LogPLot}
+B --> G{Analysis}
+D --> H{dtw}
+```
+
+Example Session:
+Load and plot a well log from ```.las``` file
+```python
+# Import the packages
+>>> from logio.core import Analysis
+>>> from logio.logplot import PlotWell, LogPlot
+
+# Read in your data from a .las file
+>>> data = Analysis().read_file(filename="data/15_9-F-11B.LAS")
+
+# Plot a GR log with a cutoff delineating shale from sand volumes
+LogPlot(data).cutoff_plot(x="GR", y="DEPTH", x_cutoff=0.45,  y_range= (0,0),xscale='linear',labels= ['Sand', 'Shale'], 
+                          fig_size = (4.5, 7),colors=['#964B00','#101010']) 
+```
+
+![Gamma Ray Cutoff Plot](static/cutoff_plot.png "Gamma Ray Cutoff Plot")
+
+See the [tutorials](./Tutorial) to explore the package step-by-step.
 
 ---
 
-### Getting started
+### Credits and References
 
-[back to top](#SPE_UI_LAGOS_HACKATHON)
+ - [**Schlumberger** Log Interpretation Principles\Applications](https://www.slb.com/resource-library/book/log-interpretation-principles-applications)
+ - [**lasio**](https://github.com/kinverarity1/lasio)
+ - [**Computing and Visualizing Dynamic Time Warping Alignments in R: The dtw Package**](https://cran.r-project.org/web/packages/dtw/vignettes/dtw.pdf)
+ 
+---
 
-### License
+### Support
 
-[back to top](#SPE_UI_LAGOS_HACKATHON)
+For support, email alexander.ifenaike@gmail.com
+
+---
+
+### Authors
+
+Please see `AUTHORS.md`(AUTHORS.md).
+
+[back to top](#logio)
+
+
+
+```python
+
+```

@@ -1,5 +1,4 @@
 venv
-README.md
 requirements.txt
 logio/core
 logio/logplot
@@ -8,3 +7,6 @@ Tutorial
 LICENSE.txt
 __init__.py
 .vscode
+AUTHORS.md
+CONTRIBUTING.md
+static
