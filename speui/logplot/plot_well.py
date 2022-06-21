@@ -81,6 +81,7 @@ class PlotWell:
         fig.text(0.08, 0.5, 'DEPTH', va='center', rotation='vertical', fontsize=15)
         for i, j in zip(self.logs, range(len(axes))):
             axes[j].set_ylim(self.dr)
+            axes[j].invert_yaxis()
             axes[j].minorticks_on()
             axes[j].xaxis.tick_top()
             axes[j].xaxis.set_label_position("top")
