@@ -46,6 +46,9 @@ extensions = [
 templates_path = ['_templates']
 source_suffix = ".rst"
 
+# The master toctree document.
+master_doc = "index"
+
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
@@ -59,6 +62,8 @@ exclude_patterns = []
 #
 html_theme = 'sphinx_rtd_theme'
 
+# The name of the Pygments (syntax highlighting) style to use.
+pygments_style = "sphinx"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -68,4 +73,18 @@ html_css_files = [
     'custom.css',
 ]
 autoclass_content = 'class'
+add_module_names = False
+
+intersphinx_mapping = {
+    'python': ('https://docs.python.org/3', None),
+    'numpy': ('http://docs.scipy.org/doc/numpy/', None),
+    'scipy': ('http://docs.scipy.org/doc/scipy/reference/', None),
+    'pandas': ('http://pandas-docs.github.io/pandas-docs-travis/', None)
+}
+
+# -- Latex output -------------------------------------------------------------
+latex_documents = [
+ ('index', "Logio.tex", "Logio Documentation", "Ifenaike Alexander", 'manual'),
+]
+
 

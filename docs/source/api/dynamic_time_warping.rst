@@ -1,5 +1,5 @@
 ==========================================================
-Well-Well Log Correlation components: dynamic_time_warping
+dynamic_time_warping
 ==========================================================
 
 .. toctree::

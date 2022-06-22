@@ -14,6 +14,5 @@ Contents
 .. toctree::
    :maxdepth: 4
    :titlesonly:
-   :caption: Documentation API:
 
    api/logio
