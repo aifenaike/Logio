@@ -16,7 +16,7 @@ Contents
    :titlesonly:
    :caption: Documentation API:
 
-   ../api/logio
+   api/logio
 
 
 
