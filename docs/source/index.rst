@@ -17,14 +17,3 @@ Contents
    :caption: Documentation API:
 
    api/logio
-
-
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
