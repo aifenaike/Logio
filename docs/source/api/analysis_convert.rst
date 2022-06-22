@@ -5,7 +5,7 @@ Analysis_convert
 Analysis
 --------------------------
 
-.. autoclass:: logio.core.analysis_convert.Analysis
+.. autoclass:: logio.core.Analysis
     :members:
     :inherited-members:
     :undoc-members:

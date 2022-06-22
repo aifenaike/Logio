@@ -3,6 +3,6 @@ Core Data Handling components
 ================
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
 
    analysis_convert
