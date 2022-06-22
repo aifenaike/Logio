@@ -6,9 +6,19 @@
 Welcome to Logio's documentation!
 =================================
 
+`Logio` is an Unsupervised Machine learning framework for well log visualization, and well-well depth correlation using logs.
+
+
+Contents
+========
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 4
+   :titlesonly:
+   :caption: Documentation API:
+
+   api/logio
+
+
 
 
 
