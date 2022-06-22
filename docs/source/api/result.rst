@@ -2,6 +2,9 @@
 result
 ======
 
+.. toctree::
+   :maxdepth: 2
+   
 DtwResult
 ---------
 

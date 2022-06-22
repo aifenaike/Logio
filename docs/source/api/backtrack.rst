@@ -2,6 +2,9 @@
 Backtrack
 ==========
 
+.. toctree::
+   :maxdepth: 2
+   
 _backtrack_jit
 --------------
 

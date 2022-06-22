@@ -2,6 +2,8 @@
 Step patterns
 ====================================
 
+.. toctree::
+   :maxdepth: 2
 
 BasePattern
 -----------

@@ -2,6 +2,8 @@
 Log Visualization and Interpretation
 ====================================
 
+.. toctree::
+   :maxdepth: 2
 
 LogPlot
 -------

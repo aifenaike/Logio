@@ -2,6 +2,9 @@
 DTW
 ====
 
+.. toctree::
+   :maxdepth: 2
+
 dtw
 ----
 

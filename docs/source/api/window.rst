@@ -2,6 +2,8 @@
 Window
 ====================================
 
+.. toctree::
+   :maxdepth: 2
 
 BaseWindow
 -----------

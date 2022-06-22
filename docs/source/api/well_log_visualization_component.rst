@@ -3,7 +3,7 @@ Well Log Visualization components
 ================
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 3
 
    plot_logs
    plot_well

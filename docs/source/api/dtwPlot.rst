@@ -2,7 +2,9 @@
 dtwPlot
 ====================================
 
-
+.. toctree::
+   :maxdepth: 2
+   
 AlignmentPlot
 -------------
 
