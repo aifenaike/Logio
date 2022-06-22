@@ -4,13 +4,13 @@ Analysis_convert
 
 .. toctree::
    :maxdepth: 2
-   
+
 Analysis
 --------------------------
 
 .. autoclass:: logio.core.Analysis
     :members:
-    :inherited-members:
+    :show-inheritance:
     :undoc-members:
 
 FileConverter
@@ -18,5 +18,5 @@ FileConverter
 
 .. autoclass:: logio.core.analysis_convert.FileConverter
     :members:
-    :inherited-members:
+    :show-inheritance:
     :undoc-members:

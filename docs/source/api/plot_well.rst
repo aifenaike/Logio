@@ -1,10 +1,10 @@
 ====================================
-Well Log Visualization (second option)
+plot_well
 ====================================
 
 .. toctree::
    :maxdepth: 2
-   
+
 PlotWell
 -------
 

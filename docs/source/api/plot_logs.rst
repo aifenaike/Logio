@@ -1,5 +1,5 @@
 ====================================
-Log Visualization and Interpretation
+plot_logs
 ====================================
 
 .. toctree::
