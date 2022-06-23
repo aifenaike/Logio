@@ -12,14 +12,15 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('..'))
 
+sys.path.insert(0, os.path.abspath("."))
+sys.path.insert(0, os.path.abspath("../"))
 
 # -- Project information -----------------------------------------------------
 
 project = 'Logio'
-copyright = '2022, Ifenaike Alexander, Awojinrin Gbenga, Ikpabi Prince, Omotosho Temitope, Adeyemi Abdullateef'
-author = 'Ifenaike Alexander, Awojinrin Gbenga, Ikpabi Prince, Omotosho Temitope, Adeyemi Abdullateef'
+copyright = '2022, Ifenaike Alexander, Awojinrin Gbenga, Ikpabi Prince, Omotosho Temitope, Adeyemi Abdullateef Ayodabo Tomisin'
+author = 'Ifenaike Alexander, Awojinrin Gbenga, Ikpabi Prince, Omotosho Temitope, Adeyemi Abdullateef Ayodabo Tomisin'
 
 # The full version, including alpha/beta/rc tags
 release = '1.0.0'
