@@ -13,8 +13,9 @@
 import os
 import sys
 
-sys.path.insert(0, os.path.abspath("."))
-sys.path.insert(0, os.path.abspath("../"))
+sys.path.insert(0, os.path.abspath('../../'))
+sys.path.insert(0, os.path.abspath('../'))
+sys.path.insert(0, os.path.abspath('./'))
 
 # -- Project information -----------------------------------------------------
 
@@ -55,6 +56,7 @@ master_doc = "index"
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
 
+apidoc_module_dir = '../../logio'
 
 # -- Options for HTML output -------------------------------------------------
 
