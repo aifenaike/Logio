@@ -24,15 +24,3 @@ dtw_low
 .. autofunction:: logio.dynamic_time_warping.dtw_low
 
 
-
-_get_window
------------
-
-.. automodule:: logio.dynamic_time_warping._get_window
-    
-
-
-_get_pattern
-------------
-
-.. automodule:: logio.dynamic_time_warping._get_pattern
