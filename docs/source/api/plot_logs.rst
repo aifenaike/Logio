@@ -8,8 +8,9 @@ plot_logs
 LogPlot
 -------
 
-.. autoclass:: logio.logplot.plot_logs.LogPlot
+.. autoclass:: logio.logplot.LogPlot
     :members:
     :inherited-members:
     :undoc-members:
+    :special-members: __init__
 

@@ -8,8 +8,9 @@ plot_well
 PlotWell
 -------
 
-.. autoclass:: logio.logplot.plot_well.PlotWell
+.. autoclass:: logio.logplot.PlotWell
     :members:
     :inherited-members:
     :undoc-members:
+    :special-members: __init__
 

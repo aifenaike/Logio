@@ -4,19 +4,21 @@ Backtrack
 
 .. toctree::
    :maxdepth: 2
-   
+
 _backtrack_jit
 --------------
 
-.. automodule:: logio.dynamic_time_warping.backtrack._backtrack_jit
+.. autoclass:: logio.dynamic_time_warping._backtrack_jit
     :members:
-    :inherited-members:
+    :show-inheritance:
     :undoc-members:
+    :special-members: __init__
 
 _get_local_path
 ---------------
 
-.. automodule:: logio.dynamic_time_warping.backtrack._get_local_path
+.. autoclass:: logio.dynamic_time_warping._get_local_path
     :members:
-    :inherited-members:
+    :show-inheritance:
     :undoc-members:
+    :special-members: __init__

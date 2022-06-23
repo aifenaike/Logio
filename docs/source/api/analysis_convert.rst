@@ -12,11 +12,13 @@ Analysis
     :members:
     :show-inheritance:
     :undoc-members:
+    :special-members: __init__
 
 FileConverter
 -------------------
 
-.. autoclass:: logio.core.analysis_convert.FileConverter
+.. autoclass:: logio.core.FileConverter
     :members:
     :show-inheritance:
     :undoc-members:
+    :special-members: __init__

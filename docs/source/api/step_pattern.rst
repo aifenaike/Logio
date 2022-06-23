@@ -8,18 +8,20 @@ Step patterns
 BasePattern
 -----------
 
-.. autoclass:: logio.dynamic_time_warping.step_pattern.BasePattern
+.. autoclass:: logio.dynamic_time_warping.BasePattern
     :members:
     :inherited-members:
     :undoc-members:
+    :special-members: __init__
 
 
 UserStepPattern
 -----------
 
-.. autoclass:: logio.dynamic_time_warping.step_pattern.UserStepPattern
+.. autoclass:: logio.dynamic_time_warping.UserStepPattern
     :members:
     :inherited-members:
     :undoc-members:
+    :special-members: __init__
 
 

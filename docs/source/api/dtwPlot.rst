@@ -4,21 +4,18 @@ dtwPlot
 
 .. toctree::
    :maxdepth: 2
-   
+
 AlignmentPlot
 -------------
 
-.. automodule:: logio.dynamic_time_warping.dtwPlot.AlignmentPlot
-    :members:
-    :inherited-members:
-    :undoc-members:
+.. autofunction:: logio.dynamic_time_warping.AlignmentPlot
+   
 
 ThreeWayPlot
 -----------
 
-.. automodule:: logio.dynamic_time_warping.dtwPlot.ThreeWayPlot
-    :members:
-    :inherited-members:
-    :undoc-members:
+.. autofunction:: logio.dynamic_time_warping.ThreeWayPlot
+
+    
 
 
