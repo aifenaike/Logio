@@ -8,11 +8,8 @@ Backtrack
 _backtrack_jit
 --------------
 
-.. autoclass:: logio.dynamic_time_warping._backtrack_jit
-    :members:
-    :show-inheritance:
-    :undoc-members:
-    :special-members: __init__
+.. autofunction:: logio.dynamic_time_warping._backtrack_jit
+    :special-members: _backtrack_jit
 
 _get_local_path
 ---------------
